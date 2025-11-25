@@ -7,7 +7,7 @@ Generated with AI Website Builder - Template-based Assembly System
 This project was generated using a local Next.js template enhanced with AI-generated content.
 
 - **Industry**: tech
-- **Style**: modern
+- **Style**: minimal
 - **Brand**: StartupTest
 - **Pages**: 1
 - **Components**: 0
@@ -168,4 +168,4 @@ To modify the theme, update the CSS variables in the `:root` selector.
 This project is private and proprietary.
 
 ---
-Generated on 2025-11-25T09:24:48.543Z
+Generated on 2025-11-25T16:01:46.113Z

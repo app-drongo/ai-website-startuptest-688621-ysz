@@ -2,12 +2,12 @@
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X } from 'lucide-react';
+import { Menu, Leaf } from 'lucide-react';
 import { useState } from 'react';
 import { useSmartNavigation } from '@/hooks/useSmartNavigation';
 
 const DEFAULT_NAVIGATION = {
-  logo: 'TechFlow',
+  logo: 'EcoFlow',
   navItems: [
     { label: 'Hero', href: '#hero' },
     { label: 'Pricing', href: '#pricing' },
@@ -42,9 +42,12 @@ export default function Navigation(props: NavigationProps) {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="flex-shrink-0">
+            <div className="flex items-center space-x-2">
+              <div className="bg-primary p-2 rounded-lg">
+                <Leaf className="h-5 w-5 text-primary-foreground" />
+              </div>
               <span
-                className="text-xl font-bold text-primary cursor-pointer hover:text-primary/80 transition-colors"
+                className="text-xl font-bold text-foreground cursor-pointer hover:text-primary transition-colors"
                 onClick={() => handleNavClick('#hero')}
                 data-editable="logo"
               >
@@ -55,16 +58,17 @@ export default function Navigation(props: NavigationProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-center space-x-1">
               {config.navItems.map((item, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-accent hover:bg-accent/10 rounded-md"
+                  className="text-muted-foreground hover:text-foreground px-4 py-2 text-sm font-medium transition-all duration-200 hover:bg-accent rounded-lg relative group"
                   data-editable-href={`navItems[${idx}].href`}
                   data-href={item.href}
                 >
                   <span data-editable={`navItems[${idx}].label`}>{item.label}</span>
+                  <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full group-hover:left-0" />
                 </button>
               ))}
             </div>
@@ -74,7 +78,7 @@ export default function Navigation(props: NavigationProps) {
           <div className="hidden md:block">
             <Button
               onClick={handleCtaClick}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 rounded-lg px-6"
               data-editable-href="ctaHref"
               data-href={config.ctaHref}
             >
@@ -89,18 +93,24 @@ export default function Navigation(props: NavigationProps) {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-foreground hover:text-primary hover:bg-accent"
+                  className="text-foreground hover:text-primary hover:bg-accent rounded-lg"
                   aria-label="Open menu"
                 >
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] bg-card text-card-foreground">
+              <SheetContent
+                side="right"
+                className="w-[300px] bg-card text-card-foreground border-border"
+              >
                 <div className="flex flex-col space-y-6 mt-6">
                   {/* Mobile Logo */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <div className="bg-primary p-2 rounded-lg">
+                      <Leaf className="h-5 w-5 text-primary-foreground" />
+                    </div>
                     <span
-                      className="text-xl font-bold text-primary cursor-pointer"
+                      className="text-xl font-bold text-foreground cursor-pointer"
                       onClick={() => handleNavClick('#hero')}
                       data-editable="logo"
                     >
@@ -109,12 +119,12 @@ export default function Navigation(props: NavigationProps) {
                   </div>
 
                   {/* Mobile Navigation */}
-                  <nav className="flex flex-col space-y-4">
+                  <nav className="flex flex-col space-y-2">
                     {config.navItems.map((item, idx) => (
                       <button
                         key={idx}
                         onClick={() => handleNavClick(item.href)}
-                        className="text-left text-foreground hover:text-primary px-3 py-2 text-base font-medium transition-colors duration-200 hover:bg-accent rounded-md"
+                        className="text-left text-muted-foreground hover:text-foreground px-4 py-3 text-base font-medium transition-all duration-200 hover:bg-accent rounded-lg border border-transparent hover:border-border"
                         data-editable-href={`navItems[${idx}].href`}
                         data-href={item.href}
                       >
@@ -127,7 +137,7 @@ export default function Navigation(props: NavigationProps) {
                   <div className="pt-4 border-t border-border">
                     <Button
                       onClick={handleCtaClick}
-                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl rounded-lg py-3"
                       data-editable-href="ctaHref"
                       data-href={config.ctaHref}
                     >

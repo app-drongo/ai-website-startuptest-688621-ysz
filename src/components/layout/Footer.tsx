@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Github, Twitter, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
+import { Github, Twitter, Linkedin, Mail, ArrowUpRight, Leaf } from 'lucide-react';
 import { useSmartNavigation } from '@/hooks/useSmartNavigation';
 
 const DEFAULT_FOOTER = {
@@ -62,12 +62,18 @@ export default function Footer(props: FooterProps) {
 
   return (
     <footer id="footer" className="bg-background text-foreground border-t border-border">
+      {/* Subtle green accent line */}
+      <div className="h-1 bg-gradient-to-r from-green-500/20 via-green-400/40 to-green-500/20"></div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid gap-8 lg:grid-cols-4 md:grid-cols-2">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="mb-4">
-              <h3 className="text-2xl font-bold text-primary">
+            <div className="mb-4 flex items-center gap-2">
+              <div className="p-2 bg-green-500/10 rounded-lg">
+                <Leaf className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-foreground">
                 <span data-editable="brandName">{config.brandName}</span>
               </h3>
             </div>
@@ -77,7 +83,7 @@ export default function Footer(props: FooterProps) {
 
             {/* Newsletter Signup */}
             <div className="mb-6">
-              <h4 className="font-semibold mb-2">
+              <h4 className="font-semibold mb-2 text-green-700 dark:text-green-400">
                 <span data-editable="newsletterTitle">{config.newsletterTitle}</span>
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
@@ -87,12 +93,12 @@ export default function Footer(props: FooterProps) {
                 <input
                   type="email"
                   placeholder={config.newsletterPlaceholder}
-                  className="flex-1 px-3 py-2 bg-background border border-input rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="flex-1 px-3 py-2 bg-background border border-input rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-colors"
                   data-editable="newsletterPlaceholder"
                 />
                 <Button
                   size="sm"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="bg-green-600 text-white hover:bg-green-700 focus:ring-green-500/50 transition-all duration-200"
                 >
                   <span data-editable="newsletterButtonText">{config.newsletterButtonText}</span>
                 </Button>
@@ -102,13 +108,16 @@ export default function Footer(props: FooterProps) {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-foreground">Company</h4>
+            <h4 className="font-semibold mb-4 text-foreground flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              Company
+            </h4>
             <nav className="space-y-3">
               {config.companyLinks.map((link, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleLinkClick(link.href)}
-                  className="block text-muted-foreground hover:text-foreground transition-colors text-sm group"
+                  className="block text-muted-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors text-sm group"
                   data-editable-href={`companyLinks[${idx}].href`}
                   data-href={link.href}
                 >
@@ -123,13 +132,16 @@ export default function Footer(props: FooterProps) {
 
           {/* Legal Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-foreground">Legal</h4>
+            <h4 className="font-semibold mb-4 text-foreground flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              Legal
+            </h4>
             <nav className="space-y-3">
               {config.legalLinks.map((link, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleLinkClick(link.href)}
-                  className="block text-muted-foreground hover:text-foreground transition-colors text-sm group"
+                  className="block text-muted-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors text-sm group"
                   data-editable-href={`legalLinks[${idx}].href`}
                   data-href={link.href}
                 >
@@ -143,7 +155,7 @@ export default function Footer(props: FooterProps) {
           </div>
         </div>
 
-        <Separator className="my-8" />
+        <Separator className="my-8 bg-green-500/20" />
 
         {/* Bottom Section */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -155,7 +167,7 @@ export default function Footer(props: FooterProps) {
           <div className="flex items-center gap-4">
             <button
               onClick={handleEmailClick}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors p-2 rounded-lg hover:bg-green-500/10"
               data-editable-href="contactEmail"
               data-href={`mailto:${config.contactEmail}`}
               aria-label="Contact us via email"
@@ -167,7 +179,7 @@ export default function Footer(props: FooterProps) {
               <button
                 key={idx}
                 onClick={() => handleLinkClick(social.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors p-2 rounded-lg hover:bg-green-500/10"
                 data-editable-href={`socialLinks[${idx}].href`}
                 data-href={social.href}
                 aria-label={`Visit our ${social.label}`}
