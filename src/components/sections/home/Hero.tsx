@@ -20,7 +20,7 @@ const DEFAULT_HERO = {
   secondaryCtaHref: '/demo',
   badge: '🚀 Now in Beta',
   heroImageUrl:
-    'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    'https://media.istockphoto.com/id/1398717821/fr/photo/%C3%A9quipe-daffaires-en-r%C3%A9union-virtuelle-par-appel-vid%C3%A9o.jpg?s=1024x1024&w=is&k=20&c=Z_eqi8v1fJKMtSp37GXrt3g9MpPk6RFcGvP4js0lD8g=',
   heroImageAlt: 'Modern office workspace with automation technology',
   features: [
     'AI-powered workflow automation',
